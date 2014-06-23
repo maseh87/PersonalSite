@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>&lt;x-spotify&gt;</title>
+
+	<!-- Importing Web Component's Polyfill -->
+	
+    <script src="bower_components/platform/platform.js"></script>
+
+	<!-- Importing Custom Elements -->
+	<link rel="import" href="src/x-spotify.html">
+</head>
+<body>
+	<!-- Using Custom Elements -->
+	<x-spotify></x-spotify>
+	<x-spotify uri="spotify:track:4bz7uB4edifWKJXSDxwHcs"></x-spotify>
+	<x-spotify uri="spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ" view="coverart"></x-spotify>
+	<x-spotify uri="spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ" view="list" theme="white"></x-spotify>
+	
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="x-spotify"
+		 attributes="theme width height uri view">
+
+	<template>
+		<template if="{{uri == 'ohno'}}">
+			<p class="x-spotify-embed-error">Inform the spotify url, e g: <code class="x-spotify-embed-code">spotify:track:4bz7uB4edifWKJXSDxwHcs</code></p>
+
+			<style>
+				.x-spotify-embed-error {
+					font-size: 12px; 
+					color: #171717;
+				}
+
+				.x-spotify-embed-code {
+					font-style: italic;
+				}
+			</style>
+		</template>
+	</template>
+
+	<script>
+		Polymer('x-spotify', {
+			uri     : 'ohno',
+			theme       : 'black',
+			width       : 500,
+			height      : 300,
+			view    : 'list',
+
+			ready: function () {
+				if (this.uri != 'ohno') {
+					this.createIframe();
+				}
+			},
+
+			createIframe: function () {
+				var iframe = document.createElement('iframe'),
+				body = document.getElementsByTagName('body')[0];
+				iframe.width = this.width;
+				iframe.height = this.height;
+				iframe.style.border = 'none';
+				iframe.classList.add('x-spotify-embed-video');
+				iframe.src = '//embed.spotify.com/?uri=' + this.uri +
+								'&view=' + this.view +
+								'&theme=' + this.theme;
+				body.appendChild(iframe);
+			}
+		});
+	</script>
+
+	<style>		
+		@media all and (max-width: 500px) {
+			.x-spotify-embed-video {
+			    width: 100%;
+			}
+		}
+	</style>
+
+</polymer-element>
